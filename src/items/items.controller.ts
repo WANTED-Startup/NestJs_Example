@@ -35,6 +35,17 @@ export class ItemsController {
     return this.itemsService.delete(id);
   }
 
+  @Delete(':id/items/:abc')
+  deleteOne(@Param('id') id,@Param('abc') abc): Promise<Item> {
+    return this.itemsService.delete(id);
+  }
+
+  @Delete(':id/items/:abc')
+  deleteTwo(@Param() params): Promise<Item> {
+    const {id,abc}=params
+    return this.itemsService.delete(id);
+  }
+
   @Put(':id')
   update(@Body() updateItemDto: CreateItemDto, @Param('id') id): Promise<Item> {
     return this.itemsService.update(id, updateItemDto);
